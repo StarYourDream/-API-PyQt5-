@@ -7,6 +7,7 @@ import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 class Ui_QFileWidget(object):
+
     def setupUi(self, QFileWidget):
         QFileWidget.setObjectName("QFileWidget")
         QFileWidget.resize(1000, 700)

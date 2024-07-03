@@ -5,7 +5,7 @@ from GUI import  QFileWidget
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(835, 581)
+        MainWindow.resize(1200, 1000)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayoutWidget = QtWidgets.QWidget(self.centralwidget)
@@ -78,10 +78,16 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
     def open_child_window(self):
-        self.child1=QFileWidget()
+        self.child1 = QFileWidget()
         self.child1.show()
-        content=self.child1.textEdit.toPlainText()
-        print(content)
+        # 连接信号到槽函数
+        self.child1.image_uploaded.connect(self.handle_image_uploaded)
+
+    def handle_image_uploaded(self, file_path):
+        print(file_path)
+        pixmap = QtGui.QPixmap(file_path)
+        self.ui.label.setPixmap(pixmap.scaled(self.ui.label.size(), QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation))
+
 
 
 if __name__ == "__main__":
