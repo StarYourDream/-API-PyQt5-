@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox, QDialog, QFileDialog
 import os
+import sys
 import warnings
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -11,6 +12,7 @@ class Ui_QFileWidget(object):
         QFileWidget.resize(1000, 700)
         QFileWidget.setMinimumSize(QtCore.QSize(1000, 700))
         QFileWidget.setMaximumSize(QtCore.QSize(1000, 700))
+        QFileWidget.setGeometry(1400,600,1000,700)
         font = QtGui.QFont()
         font.setPointSize(5)
         QFileWidget.setFont(font)
@@ -74,6 +76,7 @@ class Ui_QFileWidget(object):
         self.label.setText(_translate("QFileWidget", "文件上传"))
         self.pushButton.setText(_translate("QFileWidget", "✚"))
         self.pushButton_2.setText(_translate("QFileWidget", "上传文件"))
+
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
@@ -118,8 +121,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
 if __name__ == "__main__":
-    import sys
-
     app = QtWidgets.QApplication(sys.argv)
     mainWindow = MainWindow()
     mainWindow.show()
