@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QPushButton, QWidget
-from GUI import  QFileWidget
+from FileUploda import  QFileWidget
+from main import API
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -87,6 +88,8 @@ class MainWindow(QtWidgets.QMainWindow):
         print(file_path)
         pixmap = QtGui.QPixmap(file_path)
         self.ui.label.setPixmap(pixmap.scaled(self.ui.label.size(), QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation))
+        formatted_json = API(file_path)
+        self.ui.label_2.setText(formatted_json)
 
 
 
