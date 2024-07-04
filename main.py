@@ -4,7 +4,8 @@ import base64
 import cv2
 import os
 
-def api(path):
+
+def show_pictures(path):
     # 百度AI开放平台车辆型号识别API的URL
     request_url = "https://aip.baidubce.com/rest/2.0/image-classify/v1/vehicle_detect"  # 指定用于车辆型号识别的API端点
 
@@ -38,7 +39,7 @@ def api(path):
 
 
 def process_image(file_path):
-    request_url = "https://aip.baidubce.com/rest/2.0/image-classify/v1/vehicle_detect"
+    request_url = "https://aip.baidubce.com/rest/2.0/image-classify/v1/car"
 
     # 读取并编码图像
     with open(file_path, 'rb') as f:
@@ -47,7 +48,7 @@ def process_image(file_path):
 
     # 发送请求
     params = {"image": img_base64, "top_num": 3}
-    access_token = '24.2fcfd71dd6da73a65e54de62af80c4cd.2592000.1722495145.282335-89990893'
+    access_token = '24.73db06364d96c148581ecd77214874ea.2592000.1722415241.282335-89645117'
     request_url = request_url + "?access_token=" + access_token
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
     response = requests.post(request_url, data=params, headers=headers)
@@ -78,4 +79,3 @@ def process_image(file_path):
     cv2.imwrite(processed_image_path, img)
 
     return processed_image_path
-
