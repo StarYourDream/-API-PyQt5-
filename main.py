@@ -1,8 +1,8 @@
 import json
 import requests
 import base64
-import cv2 as cv
-
+import cv2
+import os
 
 def api(path):
     # 百度AI开放平台车辆型号识别API的URL
@@ -54,7 +54,7 @@ def process_image(file_path):
     data = response.json()
 
     # 加载原始图像
-    img = cv.imread(file_path)
+    img = cv2.imread(file_path)
 
     # 处理车辆检测结果
     num = data['vehicle_num']['car']
@@ -64,19 +64,18 @@ def process_image(file_path):
         y1 = location['top']
         x2 = x1 + location['width']
         y2 = y1 + location['height']
-        cv.rectangle(img, (x1, y1), (x2, y2), (0, 0, 255), 2)
+        cv2.rectangle(img, (x1, y1), (x2, y2), (0, 0, 255), 2)
         text = item['type']
         position = (x1, y1 - 2)
-        font = cv.FONT_HERSHEY_SIMPLEX
+        font = cv2.FONT_HERSHEY_SIMPLEX
         font_scale = 1
         color = (0, 0, 255)
         thickness = 2
-        cv.putText(img, text, position, font, font_scale, color, thickness, cv.LINE_AA)
+        cv2.putText(img, text, position, font, font_scale, color, thickness, cv2.LINE_AA)
 
-    # 显示图像
-    cv.imshow('Image Window', img)
-    cv.waitKey(0)
-    cv.destroyAllWindows()
+    # 保存处理后的图像
+    processed_image_path = os.path.join(os.path.dirname(file_path), "processed_image.jpg")
+    cv2.imwrite(processed_image_path, img)
 
+    return processed_image_path
 
-process_image('pictures/1.jpg')

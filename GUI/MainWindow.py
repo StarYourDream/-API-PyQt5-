@@ -1,7 +1,9 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from FileUploda import QFileWidget
 from main import api
+from main import process_image
 import sys
+
 
 class MainUseWindow(QtWidgets.QWidget):
 
@@ -50,7 +52,8 @@ class MainUseWindow(QtWidgets.QWidget):
             "font-weight: bold;border-radius: 50%;font-family: '微软雅黑';}")
 
         self.pushButton.clicked.connect(self.open_child_window)
-        self.pushButton_2.clicked.connect(self.api_get)
+        # self.pushButton_2.clicked.connect(self.api_get)
+        self.pushButton_2.clicked.connect(self.recognize)
         self.uploaded_file_path = None  # 类变量来存储文件路径
 
         self.retranslateUi()
@@ -63,18 +66,22 @@ class MainUseWindow(QtWidgets.QWidget):
         self.pushButton_2.setText(_translate("MainWindow", "识别"))
         self.label_2.setText(_translate("MainWindow", ""))
 
-
-
     def open_child_window(self):
         self.child = QFileWidget()
         self.child.show()
         # 连接信号到槽函数
         self.child.image_uploaded.connect(self.handle_image_uploaded)
 
-    def api_get(self):
+    def api_get(self):  # 识别
         if self.uploaded_file_path:  # 确保文件路径已设置
             formatted_json = api(self.uploaded_file_path)
             self.label_2.setText(formatted_json)
+
+    def recognize(self):
+        if self.uploaded_file_path:  # 确保文件路径已设置
+            formatted_json = api(self.uploaded_file_path)
+            self.label_2.setText(formatted_json)
+            self.handle_image_uploaded(process_image(self.uploaded_file_path))
 
     def handle_image_uploaded(self, file_path):
         self.uploaded_file_path = file_path  # 存储文件路径
@@ -82,9 +89,6 @@ class MainUseWindow(QtWidgets.QWidget):
         self.label.setPixmap(
             pixmap.scaled(self.label.size(), QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation))
 
-    def handle_answer_show(self, file_path):
-        formatted_json = api(file_path)
-        self.label_2.setText(formatted_json)
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
