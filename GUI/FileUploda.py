@@ -1,3 +1,4 @@
+import cv2
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox, QFileDialog
 import os
@@ -63,6 +64,10 @@ class QFileWidget(QtWidgets.QWidget):
 
     def on_upload_clicked(self):
         content = self.textEdit.toPlainText()
+        # 复制图片副本用于裁剪
+        img = cv2.imread(content)
+        output_path = os.path.join('copy2', f'other.jpg')
+        cv2.imwrite(output_path, img)
         if not os.path.exists(content):
             QMessageBox.warning(self, "上传失败", "请上传图片")
         else:

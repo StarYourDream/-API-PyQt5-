@@ -16,13 +16,14 @@ class MainUseWindow(QtWidgets.QWidget):
         self.setGeometry(200, 200, 2300, 1400)
         self.setStyleSheet("background-color: white;")
 
+        #展示上传的图片
         self.label = QtWidgets.QLabel(self)
         self.label.setText("")
         self.label.setPixmap(QtGui.QPixmap("../pictures/111.jpg"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
-        # 设置标签位置和大小不知道
-        self.label.setGeometry(100, 60, 1000, 900)
+        # 设置标签位置和大小
+        self.label.setGeometry(100, 60, 1000, 800)
 
         # 展示识别结果的标签
         # 创建标签 label_2 并设置位置和大小
