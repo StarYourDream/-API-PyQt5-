@@ -125,11 +125,10 @@ def process_image(file_path):
 
             new_no_json = no_recognize(output_path, result_list[count])
             add_no_json.append(new_no_json)
-            print(add_no_json)
+
 
             new_car_json = car_recognize(output_path, add_no_json[count])
             add_car_json.append(new_car_json)
-            print(add_car_json)
 
             count = count + 1
 
@@ -141,8 +140,6 @@ def process_image(file_path):
         # 保存处理后的图像
     processed_image_path = os.path.join(os.path.dirname(file_path), "processed_image.jpg")
     cv2.imwrite(processed_image_path, img)
-    # return processed_image_path
-    print(add_car_json)
     return add_car_json
 
 

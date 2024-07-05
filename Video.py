@@ -1,5 +1,4 @@
 import base64
-
 import requests
 from PyQt5.QtCore import QThread
 import cv2
@@ -7,11 +6,6 @@ from PyQt5.QtCore import pyqtSignal
 
 
 class Video(QThread):
-    # 使用信号与槽槽函数向外传递数据
-    #    发送者   Video
-    #    信号类型  自定义信号类型(参数信号所能传递的数据)
-    #    接收者   （线程所在的Dialog）
-    #    槽函数   （接收者类：功能方法）
     send = pyqtSignal(int, int, int, bytes, int)  # emit
 
     def __init__(self, video_id):

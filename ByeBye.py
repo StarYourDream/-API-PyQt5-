@@ -1,9 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QImage, QPixmap
-
-from GUI.FileUploda import QFileWidget
-from main import process_image
 import sys
 from Video import Video
 
@@ -41,8 +38,6 @@ class SupriseWindow(QtWidgets.QWidget):
                                   "color:#FADADD;"
                                   " font-family: '宋体'; }")
 
-
-        # 绑定信号与槽函数
         self.th1 = Video(0)
         self.th1.send.connect(self.showimg)
         self.th1.start()
