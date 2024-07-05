@@ -25,16 +25,16 @@ class QLoginWidget(QtWidgets.QWidget):
         QLoginWidget.setStyleSheet("background-color: white;")
         # 使用QLabel设置背景图
         label = QLabel(self)
-        pixmap = QPixmap("../pictures/background (2).jpg")  # 替换为你的图片路径
+        pixmap = QPixmap("../pictures/login_ground.jpg")  # 替换为你的图片路径
         pixmap = pixmap.scaled(self.width(), self.height())  # 缩放图片以适应窗口大小
         label.setPixmap(pixmap)
         label.setGeometry(0, 0, self.width(), self.height())
 
         self.label = QtWidgets.QLabel(QLoginWidget)
-        self.label.setText("古蒙内智能车辆识别系统")
+        self.label.setText("内蒙古智能车辆识别系统")
         self.label.setObjectName("欢迎")
         # 设置标签位置和大小
-        self.label.setGeometry(500, 300, 800, 200)
+        self.label.setGeometry(390, 300, 1000, 200)
         self.label.setStyleSheet("QLabel "
                                  "{ background-color: transparent;"
                                  "color:white; "

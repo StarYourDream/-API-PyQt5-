@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QLabel
 from FileUploda import QFileWidget
 from main import process_image
 import sys
-
+from ByeBye import SupriseWindow
 
 class MainUseWindow(QtWidgets.QWidget):
 
@@ -21,14 +21,14 @@ class MainUseWindow(QtWidgets.QWidget):
 
         # 使用QLabel设置背景图
         label = QLabel(self)
-        pixmap = QPixmap("../pictures/back1.jpg")  # 替换为你的图片路径
+        pixmap = QPixmap("../pictures/main_ground.jpg")  # 替换为你的图片路径
         pixmap = pixmap.scaled(self.width(), self.height())  # 缩放图片以适应窗口大小
         label.setPixmap(pixmap)
         label.setGeometry(0, 0, self.width(), self.height())
 
         self.label = QtWidgets.QLabel(self)
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("../pictures/111.jpg"))
+        self.label.setPixmap(QtGui.QPixmap("../pictures/example.jpg"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         # 设置标签位置和大小
@@ -57,7 +57,7 @@ class MainUseWindow(QtWidgets.QWidget):
         self.tableWidget.setColumnCount(4)
 
         # 设置表头标签
-        self.tableWidget.setHorizontalHeaderLabels(['类型', '车牌', '品牌名', '颜色'])
+        self.tableWidget.setHorizontalHeaderLabels(['类型', '车牌', '品牌名', '年份'])
 
         # 设置样式
         self.tableWidget.setStyleSheet("background-color: white; color: black; font-size: 26px;")
@@ -70,7 +70,7 @@ class MainUseWindow(QtWidgets.QWidget):
         self.arrow_button.setIcon(QIcon('../pictures/LogosInternetComputerIcon.svg'))
         self.arrow_button.setIconSize(QSize(120, 120))  # 可选，设置图标大小
         self.arrow_button.setStyleSheet("QPushButton { background-color: transparent; border: none; }")
-        self.arrow_button.clicked.connect(self.show1)
+        self.arrow_button.clicked.connect(self.surprise)
 
         # 上传按钮
         self.pushButton = QtWidgets.QPushButton(self)
@@ -145,8 +145,9 @@ class MainUseWindow(QtWidgets.QWidget):
         # 连接信号到槽函数
         self.child.image_uploaded.connect(self.handle_image_uploaded)
 
-    def show1(self):
-        print("小彩蛋")
+    def surprise(self):
+        self.child = SupriseWindow()
+        self.child.show()
 
     def recognize(self):
         if self.uploaded_file_path:  # 确保文件路径已设置
