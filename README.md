@@ -10,7 +10,7 @@
 
 
 
-- :star:  :star:  :star:  **data里需要存放一个命名： **vd1.mp4**  文件 && access_token我没放** 
+- :star:  :star:  :star:  **data里需要存放一个命名： **vd1.mp4**  文件 && access_token我没放** :star:  :star:  :star:
 - data里有测试图片，建议图片放在data里
 - 使用流程：运行GUI中Login.py，点击进入系统，点击上传——上传文件，点击识别——识别
 - GUI文件说明：Login.py登录窗口，MainWindow主窗口，FileUploda文件上传，ByeBye视频播放
