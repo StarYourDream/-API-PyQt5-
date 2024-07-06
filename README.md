@@ -16,6 +16,7 @@
 - GUI文件说明：Login.py登录窗口，MainWindow主窗口，FileUploda文件上传，ByeBye视频播放
 - 后端文件说明：main进行各项处理，Video视频处理
 - 处理视频的代码在ByeBye窗口里,因为我的电脑只能跑几帧，而同样的代码在别的电脑里能运行流程，所以保留了视频处理但不做使用。
+- requirements.txt里还有许多无关的库，本次的项目的opencv,pyqt5版本很新，应该没什么问题，建议别用requirements.txt
 
 
 
