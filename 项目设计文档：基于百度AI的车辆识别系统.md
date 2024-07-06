@@ -16,21 +16,21 @@
 
 ### （一）功能结构图与流程图
 
-![img](file:///C:\Users\Lenovo\AppData\Local\Temp\ksohtml4816\wps1.jpg) 
+![img](https://gitee.com/StartYourDream/ApiVehicleDetect/raw/master/FuncSturctureChart.png) 
 
 > ##### 图 2.1.1 功能结构图
 
  
 
-![img](file:///C:\Users\Lenovo\AppData\Local\Temp\ksohtml4816\wps2.jpg) 
+![img](https://gitee.com/StartYourDream/ApiVehicleDetect/raw/master/UserFlowChart.png) 
 
 > ##### 图 2.1.1 用户流程图
 
  
 
-### （**二）** 用户界面
+### （二） 用户界面
 
-#### **1、初始界面**
+#### 1、初始界面
 
 简洁的启动画面，包含一个进入主界面的按钮。
 
@@ -52,7 +52,7 @@
 
  
 
-### **（**三）后端处理
+### （三）后端处理
 
 1、图片处理：读取用户上传的图片文件，进行必要的预处理（如调整大小、格式转换）以符合API要求。
 
@@ -60,21 +60,21 @@
 
 2、API调用：
 
-Ø 使用Python的requests库向百度AI的车辆检测API发送请求，获取图片中车辆的位置信息。
+ 使用Python的requests库向百度AI的车辆检测API发送请求，获取图片中车辆的位置信息。
 
-Ø 根据车辆位置信息，可能需要裁剪图片或调整参数，再向车型识别API发送请求，获取车牌、车型、颜色等详细信息。
+ 根据车辆位置信息，可能需要裁剪图片或调整参数，再向车型识别API发送请求，获取车牌、车型、颜色等详细信息。
 
-Ø 数据处理：解析API返回的JSON数据，提取有用信息，并准备用于界面展示的格式。
+ 数据处理：解析API返回的JSON数据，提取有用信息，并准备用于界面展示的格式。
 
-### **（**四）交互逻辑
+### （四）交互逻辑
 
-Ø 确保用户界面的响应性，如点击按钮后立即显示加载动画或进度条。
+ 确保用户界面的响应性，如点击按钮后立即显示加载动画或进度条。
 
-Ø 处理各种异常情况，如文件上传失败、网络请求错误、API返回无效数据等，并向用户显示友好的错误提示。
+ 处理各种异常情况，如文件上传失败、网络请求错误、API返回无效数据等，并向用户显示友好的错误提示。
 
-## **三、**技术结构
+## 三、技术结构
 
-### **（**一）用户界面设计
+### （一）用户界面设计
 
  
 
@@ -82,7 +82,7 @@
 
 确保界面布局合理，信息展示清晰，操作直观易懂。考虑使用Qt Designer进行界面设计，以提高开发效率。
 
-### **（**二）API集成
+### (二）API集成
 
 通过百度AI的车辆检测与车型识别API文档，了解请求参数、响应格式及限制条件。
 
@@ -90,7 +90,7 @@
 
 考虑到API可能存在的限流或配额限制，实现合理的调用策略，如缓存结果、限制调用频率等。
 
-### **（**三）结果展示
+### （三）结果展示
 
 设计合理的展示方式，使识别结果一目了然。例如，在图片上绘制矩形框标注车辆位置，并在列表或表格中详细列出每辆车的识别信息。
 
@@ -104,9 +104,9 @@
 
  
 
-### （五）**界面设计——低保真原型图**
+### （五）界面设计——低保真原型图
 
-![img](file:///C:\Users\Lenovo\AppData\Local\Temp\ksohtml4816\wps3.jpg) 
+![img](https://gitee.com/StartYourDream/ApiVehicleDetect/blob/master/LoginInterface.png) 
 
 > ##### 图 3.5.1 初始界面
 
@@ -114,11 +114,11 @@
 
  
 
-![img](file:///C:\Users\Lenovo\AppData\Local\Temp\ksohtml4816\wps4.jpg) 
+![img](https://gitee.com/StartYourDream/ApiVehicleDetect/raw/master/MainInterface.png) 
 
 > ##### 图 3.5.2 主界面
 
-![img](file:///C:\Users\Lenovo\AppData\Local\Temp\ksohtml4816\wps5.jpg) 
+![img](https://gitee.com/StartYourDream/ApiVehicleDetect/raw/master/FileInterface.png) 
 
 > ##### **图 3.5.3 文件上传界面**
 
