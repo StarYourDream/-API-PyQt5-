@@ -110,10 +110,6 @@
 
 > ##### 图 3.5.1 初始界面
 
- 
-
- 
-
 ![img](https://gitee.com/StartYourDream/ApiVehicleDetect/raw/master/MainInterface.png) 
 
 > ##### 图 3.5.2 主界面
