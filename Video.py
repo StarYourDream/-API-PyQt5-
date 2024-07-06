@@ -41,7 +41,7 @@ def vehicle_detect(img):
     _, encoded_image = cv2.imencode('.jpg', img)
     base64_image = base64.b64encode(encoded_image)
     params = {"image": base64_image}
-    access_token = '24.2fcfd71dd6da73a65e54de62af80c4cd.2592000.1722495145.282335-89990893'
+    access_token = ''
     request_url = request_url + "?access_token=" + access_token
     headers = {'content-type': 'application/x-www-form-urlencoded'}
     response = requests.post(request_url, data=params, headers=headers)
