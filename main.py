@@ -1,44 +1,8 @@
 import json
-
 import requests
 import base64
 import cv2
 import os
-
-from PyQt5.QtCore import QThread, pyqtSignal
-
-
-def show_pictures(path):
-    # 百度AI开放平台车辆检测识别API的URL
-    request_url = "https://aip.baidubce.com/rest/2.0/image-classify/v1/vehicle_detect"  # 指定用于车辆型号识别的API端点
-
-    # 打开并读取图片文件，准备进行编码
-    f = open(path, 'rb')  # 以二进制读模式打开指定路径的图片文件
-    img = base64.b64encode(f.read()).decode('utf-8')  # 将图片内容读取后编码为Base64字符串，并解码为UTF-8格式的字符串
-    f.close()  # 关闭文件
-
-    # 构造请求参数
-    params = {"image": img, "top_num": 3}  # 将Base64编码的图片和期望返回的最可能车型数量作为参数
-    access_token = '24.d31aa2ec78906dce0b6336e7c50750b3.2592000.1722826114.282335-89934939'  # 百度AI服务的访问令牌
-    # 将access_token添加到请求URL中，这是进行API请求的必要认证步骤
-    request_url = request_url + "?access_token=" + access_token
-
-    # 设置请求头
-    headers = {
-        'Content-Type': 'application/x-www-form-urlencoded'}  # 发送Base64编码的图片，保持'application/x-www-form-urlencoded'
-
-    # 发送POST请求
-    response = requests.post(request_url, data=params, headers=headers)  # 发送POST请求
-
-    # 处理响应
-    if response.status_code == 200:  # 检查响应状态码是否为200，表示请求成功
-        json_data = response.json()  # 将响应内容解析为JSON格式
-        formatted_json = json.dumps(json_data, indent=4,
-                                    ensure_ascii=False)  # 将JSON数据格式化为易读的字符串，包括中文（通过设置ensure_ascii=False）
-        print(formatted_json)  # 打印美化后的JSON数据
-    else:
-        print(f"Error: {response.status_code}, {response.text}")  # 如果请求失败，打印错误状态码和错误信息
-    return formatted_json
 
 
 def process_image(file_path):
@@ -52,7 +16,7 @@ def process_image(file_path):
 
     # 构造请求参数
     params = {"image": img, "top_num": 3}  # 将Base64编码的图片和期望返回的最可能车型数量作为参数
-    access_token = '24.2fcfd71dd6da73a65e54de62af80c4cd.2592000.1722495145.282335-89990893'  # 百度AI服务的访问令牌
+    access_token = ''  # 百度AI服务的访问令牌
     # 将access_token添加到请求URL中，这是进行API请求的必要认证步骤
     request_url = request_url + "?access_token=" + access_token
 
@@ -74,14 +38,14 @@ def process_image(file_path):
 
     # 加载原始图像
     img = cv2.imread(file_path)
-    img2 = cv2.imread('D:\AI_Summer\CarProject\GUI\copy2\other.jpg')
+    img2 = cv2.imread('D:\AI_Summer\CarProject\GUI\copy2\other.jpg')#上传时保留了副本
 
     # 建立存放文件夹
     output_dir = '../output_images'
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     # 定义裁剪区域扩展的宽度和高度
-    padding = 20  # 您可以根据需要调整这个值
+    padding = 20  #根据需要调整这个值
     count = 0
     for index, item in enumerate(data['vehicle_info'], start=1):
         type = item['type']
@@ -149,7 +113,7 @@ def process_image(file_path):
 def car_recognize(path, result):
     # 百度AI开放平台车辆型号识别API的URL
     add_car_json = []
-    request_url = "https://aip.baidubce.com/rest/2.0/image-classify/v1/car"  # 指定用于车辆型号识别的API端点
+    request_url = "https://aip.baidubce.com/rest/2.0/image-classify/v1/car"  # 指定用于车牌识别的API端点
 
     # 打开并读取图片文件，准备进行编码
     f = open(path, 'rb')  # 以二进制读模式打开指定路径的图片文件
@@ -158,7 +122,7 @@ def car_recognize(path, result):
 
     # 构造请求参数
     params = {"image": img, "top_num": 1}  # 将Base64编码的图片和期望返回的最可能车型数量作为参数
-    access_token = '24.73db06364d96c148581ecd77214874ea.2592000.1722415241.282335-89645117'  # 百度AI服务的访问令牌
+    access_token = ''  # 百度AI服务的访问令牌
     # 将access_token添加到请求URL中，这是进行API请求的必要认证步骤
     request_url = request_url + "?access_token=" + access_token
 
@@ -178,7 +142,7 @@ def car_recognize(path, result):
     return add_car_json
 
 
-# 车牌识别，暂定
+# 车牌识别
 def no_recognize(path, result):
     # 百度AI开放平台车辆型号识别API的URL
     add_no_json = []
@@ -191,7 +155,7 @@ def no_recognize(path, result):
 
     # 构造请求参数
     params = {"image": img, "top_num": 1}  # 将Base64编码的图片和期望返回的最可能车型数量作为参数
-    access_token = '24.c164de1e7842856402634609fa1de5e8.2592000.1722765172.282335-91024805'  # 百度AI服务的访问令牌
+    access_token = ''  # 百度AI服务的访问令牌
     # 将access_token添加到请求URL中，这是进行API请求的必要认证步骤
     request_url = request_url + "?access_token=" + access_token
 
@@ -215,7 +179,7 @@ def no_recognize(path, result):
 
 
 def data_look(look_json, result_list):
-    # 遍历result列表，并提取name和year
+    # 遍历result列表，并提取品牌名和年份
     for item in look_json['result']:  # enumerate从1开始计数
         result_list.extend([item['name'], item['year']])
     # 打印结果
@@ -223,6 +187,7 @@ def data_look(look_json, result_list):
 
 
 def data_no(no_json, result_list, stu):
+# 遍历result列表，并提取车牌
     if stu == 0:
         num = '未能识别'
     else:
