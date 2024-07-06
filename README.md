@@ -18,5 +18,6 @@
 ![拖转上传](https://foruda.gitee.com/images/1720233701505318257/3f8ff8af_13756960.png "屏幕截图")
 ![图片画框](https://foruda.gitee.com/images/1720234347388970249/9567e7a6_13756960.png "屏幕截图")
 ![列表信息](https://foruda.gitee.com/images/1720234356246768004/ae352dbc_13756960.png "屏幕截图")
+> 点击按钮跳转视频
 ![彩蛋按钮](https://foruda.gitee.com/images/1720234390884067364/ca3d5ac8_13756960.png "屏幕截图")
 ![视频效果](https://foruda.gitee.com/images/1720234404485628110/1931edf1_13756960.png "屏幕截图")
