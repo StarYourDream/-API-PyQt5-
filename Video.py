@@ -10,13 +10,9 @@ class Video(QThread):
 
     def __init__(self, video_id):
         super().__init__()
-        # 准备工作
-        # self.th_id = 0
-        # # if video_id == 'data/vd1.mp4':
         self.th_id = video_id
 
-        #self.dev = cv2.VideoCapture('../data/vd1.mp4')
-        self.dev = cv2.VideoCapture('data/vd1.mp4')
+        self.dev = cv2.VideoCapture('../data/vd1.mp4')
         self.is_video_opened = self.dev.isOpened()
         if not self.is_video_opened:
             print("警告：无法打开视频文件")
